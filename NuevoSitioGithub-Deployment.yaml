@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ghcr.io/pablocarrascoascii/docker-test/nginx-html:latest
+        image: ghcr.io/pablocarrascoascii/nginx-html:latest
         ports:
         - containerPort: 80
       imagePullSecrets:
