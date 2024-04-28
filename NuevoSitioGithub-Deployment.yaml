@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nuevo-sitio-github
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nuevo-sitio-github
+  template:
+    metadata:
+      labels:
+        app: nuevo-sitio-github
+    spec:
+      containers:
+      - name: nginx
+        image: ghcr.io/pablocarrascoascii/docker-test/nginx-html:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: ghcr-credentials
