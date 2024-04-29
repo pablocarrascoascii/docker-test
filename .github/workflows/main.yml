@@ -32,7 +32,7 @@ jobs:
     - name: Trigger Jenkins build
       run: |
         echo "URL: http://${{ secrets.JENKINS_URL }}/job/GithubProject/build?token=${{ secrets.JENKINS_TOKEN }}"
-        curl -v -X POST -H "Jenkins-Crumb:CRUMB" "${{ secrets.JENKINS_URL }}/job/GithubProject/build?token=${{ secrets.JENKINS_TOKEN }}"
+        curl -v -X POST -H "Jenkins-Crumb:${{ secrets.CRUMB }}" "${{ secrets.JENKINS_URL }}/job/GithubProject/build?token=${{ secrets.JENKINS_TOKEN }}"
       env:
         JENKINS_URL: ${{ secrets.JENKINS_URL }}
         JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
