@@ -31,4 +31,6 @@ jobs:
 
     - name: Trigger Jenkins build
       run: |
-         curl -L -X POST "https://${{ secrets.JENKINS_URL }}/github-webhook/"
+         curl -L -X POST "https://${{ secrets.JENKINS_URL }}/github-webhook/" \
+         -H "Content-Type: application/json" \
+         -d '{"event_type": "push"}'
