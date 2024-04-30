@@ -28,11 +28,3 @@ jobs:
       with:
         push: true
         tags: ghcr.io/${{ github.repository_owner }}/nginx-html:latest
-
-    - name: Trigger Jenkins build
-      run: |
-        curl -L -X POST -H "Jenkins-Crumb:${{ secrets.CRUMB }}" "https://${{ secrets.JENKINS_URL }}/job/GithubProject/build?token=${{ secrets.JENKINS_TOKEN }}"
-      env:
-        JENKINS_URL: ${{ secrets.JENKINS_URL }}
-        JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
-        CRUMB: ${{ secrets.CRUMB }}
