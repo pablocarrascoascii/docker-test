@@ -29,8 +29,6 @@ jobs:
         push: true
         tags: ghcr.io/${{ github.repository_owner }}/nginx-html:latest
 
-    - name: Trigger Jenkins build
+    - name: Trigger Jenkins Job
       run: |
-         curl -L -X POST "https://${{ secrets.JENKINS_URL }}/github-webhook/" \
-         -H "Content-Type: application/json" \
-         -d '{"event_type": "push"}'
+        curl -X POST "http://${{ secrets.JENKINS_URL }}/job/Github-workflow/build?token=123"
