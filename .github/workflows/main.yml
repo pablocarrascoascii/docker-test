@@ -31,4 +31,4 @@ jobs:
 
     - name: Trigger Jenkins Job
       run: |
-        curl -X POST "http://${{ secrets.JENKINS_URL }}/job/Github-workflow/build?token=123"
+        curl -X POST "https://${{ secrets.JENKINS_URL }}/job/Github-workflow/build?token=123"
