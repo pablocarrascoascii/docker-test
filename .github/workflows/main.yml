@@ -32,3 +32,20 @@ jobs:
     - name: Trigger Jenkins Job
       run: |
         curl -X POST "https://${{ secrets.JENKINS_URL }}/job/Github-workflow/build?token=123"
+
+    - name: Activar Webhook
+      run: |
+          curl -X POST \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Content-Type: application/json" \
+          https://api.github.com/repos/docker-test/hooks \
+          -d '{
+            "name": "web",
+            "active": true,
+            "events": ["push"],
+            "config": {
+              "url": "https://${{ secrets.JENKINS_URL }}/github-webhook/",
+              "content_type": "json",
+              "secret": "${{JENKINS_API_TOKEN}}"
+            }
+          }'
